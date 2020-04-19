@@ -1,4 +1,4 @@
-import { Row, Col,  Icon, Breadcrumb} from 'antd'
+import { Row, Col,  Icon, Breadcrumb, Affix} from 'antd'
 import Link from 'next/link'
 import React ,{useState}  from 'react'
 import Head from 'next/head'
@@ -9,7 +9,8 @@ import '../static/style/pages/index.css'
 import Footer from '../components/Footer'
 import '../static/style/pages/detailed.css'
 import ReactMarkdown from 'react-markdown'
-
+import MarkNav from 'markdown-navbar'
+import 'markdown-navbar/dist/navbar.css'
 
 const Detailed = function(){
 
@@ -95,7 +96,18 @@ return (
 
       <Col className="comm-right" xs={0} sm={0} md={7} lg={5} xl={4}>  
           <Author />
-          <Advert />    
+          <Advert />
+          <Affix offsetTop={5}>    
+          <div className="detailed-nav comm-box">
+            <div className="nav-title"> 文章目录</div>
+            <MarkNav 
+              className="article-menu"
+              source={markdown}
+
+              order={true}
+            />
+          </div>
+          </Affix>
         </Col>
     </Row>
 
